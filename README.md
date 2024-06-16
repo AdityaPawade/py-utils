@@ -1,5 +1,12 @@
 # py-utils
 
-docker run -e AWS_BUCKET_NAME=your-bucket-name -e AWS_ACCESS_KEY_ID=your-access-key-id -e AWS_SECRET_ACCESS_KEY=your-secret-access-key algostonk:py-utils --verify backup C:/Users/Aditya/Projects/Algostonk/knowledge_base/data/knowledge
+docker build --platform linux/amd64 -t algostonk:py-utils-amd64 .
+docker build --platform linux/arm64 -t algostonk:py-utils-arm64 .
 
-docker run -it -e AWS_BUCKET_NAME=kb-backups -e AWS_ACCESS_KEY_ID=<> -e AWS_SECRET_ACCESS_KEY=<> -v ../knowledge_base/data:/data algostonk:py-utils "--verify" "backup" "/data" "knowledge"
+docker run -it -e AWS_BUCKET_NAME=kb-backups -e AWS_ACCESS_KEY_ID=<> -e AWS_SECRET_ACCESS_KEY=<> -v ${KB_HOME}/data:/data algostonk:py-utils "--verify" "backup" "/data" "knowledge"
+
+docker image tag algostonk:py-utils-amd64 adtsw/prod:algostonk-py-utils-amd64
+docker image tag algostonk:py-utils-arm64 adtsw/prod:algostonk-py-utils-arm64
+
+docker push adtsw/prod:algostonk-py-utils-amd64
+docker push adtsw/prod:algostonk-py-utils-arm64

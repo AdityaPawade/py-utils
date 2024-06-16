@@ -144,6 +144,8 @@ def setup_arg_parser():
     return parser
 
 if __name__ == "__main__":
+    print(f"Invoked with arguments: {sys.argv[1:]}")
+    
     parser = setup_arg_parser()
     args = parser.parse_args()
 

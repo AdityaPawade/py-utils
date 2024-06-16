@@ -1,0 +1,15 @@
+services:
+  py-utils:
+    image: 'adtsw/prod:algostonk-py-utils-arm64'
+    container_name: py-utils
+    environment:
+      AWS_BUCKET_NAME: kb-backups
+      AWS_ACCESS_KEY_ID: <>
+      AWS_SECRET_ACCESS_KEY: <>
+    volumes:
+      - '/data:/data'
+    command:
+      - bash
+    tty: true
+    stdin_open: true
+    restart: "no"
