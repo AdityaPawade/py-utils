@@ -10,3 +10,8 @@ docker image tag algostonk:py-utils-arm64 adtsw/prod:algostonk-py-utils-arm64
 
 docker push adtsw/prod:algostonk-py-utils-amd64
 docker push adtsw/prod:algostonk-py-utils-arm64
+
+## Commands
+python /app/backup_manager.py restore /data knowledge
+/usr/local/bin/python /usr/local/bin/sqlite_web /data/knowledge/db/kb.db -p 17434 -H 0.0.0.0
+/usr/local/bin/python /usr/local/bin/sqlite_web -r /data/knowledge/db/kb.db -p 17434 -H 0.0.0.0
